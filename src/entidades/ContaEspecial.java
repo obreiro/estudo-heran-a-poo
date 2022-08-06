@@ -1,44 +1,36 @@
 package entidades;
 
-public class ContaEspecial extends Conta {
+public final class ContaEspecial extends Conta {
 
 	private Double limite;
-
+	
 	public ContaEspecial() {
-		
+	this.limite = 1000.0 + super.getSaldo();
 	}
 
 	public ContaEspecial(String titular, Integer numConta, Double saldo, Double limite) {
 		super(titular, numConta, saldo);
-		this.limite = limite;
 	}
 
 	public Double getLimite() {
 		return limite;
 	}
 
-	public void setLimite(Double limite) {
-		this.limite = limite + this.getSaldo();
-	}
-	
+	//metodo testa se saque é menor que saldo/limite
 	public boolean LimitandoConta(double valor) {
-		//this.setLimite(getLimite() + super.getSaldo()); 
-		if( valor <= this.getLimite()) {
-			this.limite -= valor; 
-			return true;
+		   if( valor < this.getLimite()) {
+			   super.sacar(valor);
+		    return true;
 		} else {
-			System.out.println("Saldo indiponivel");
-			return false;
-		}	
+			 return false;
+		}
 	}
 	
-	@Override
-	public String toString() {
-		String info = "\nTitular: " + this.getTitular();
-		info += "\nNúmero da conta: " + this.getNumConta();
-		info += "\nLimite da conta: " + this.getLimite();
-		return info;
+	//se saque for menor metodo sacar é chamado com desconto de 2.0
+	public void sacar(double valor) {
+		super.sacar(valor);
+		 System.out.println("Conta Especial");
+		this.limite -= valor ;
 	}
-	
-	
+		
 }

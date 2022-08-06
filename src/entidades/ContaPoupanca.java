@@ -12,18 +12,11 @@ public class ContaPoupanca extends Conta {
 		super(titular, numConta, saldo);
 	}
 	
-	public void atualizaSaldo() {
-		double tx = TAXA*this.getSaldo();
-		this.setSaldo(getSaldo() + tx);
+	public void  atualizaSaldo() {
+		double tx = TAXA*super.getSaldo();
+	    this.setSaldo(getSaldo() + tx);
 	}
 	
-	public void sacar(double valor) {
-		if(valor < this.getSaldo()) {
-			this.setSaldo(getSaldo() - valor);
-		} else {
-			System.out.println("\nOperação indiponivel");
-		}	
-	}
 
 	@Override
 	public String toString() {

@@ -5,13 +5,13 @@ public class Conta {
 	private String titular;
 	private Integer numConta;
 	private Double saldo;
-
+	
 	public Conta() {
-
+    this.saldo = 1000.0;
 	}
 
 	public Conta(String titular, Integer numConta, Double saldo) {
-		super();
+		
 		this.titular = titular;
 		this.numConta = numConta;
 		this.saldo = saldo;
