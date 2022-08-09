@@ -5,16 +5,36 @@ public class Conta {
 	private String titular;
 	private Integer numConta;
 	private Double saldo;
+	private ContaPoupanca cp;
+	private ContaEspecial ce;
 	
 	public Conta() {
     this.saldo = 1000.0;
 	}
 
-	public Conta(String titular, Integer numConta, Double saldo) {
-		
+	public Conta(String titular, Integer numConta, Double saldo, ContaPoupanca cp, ContaEspecial ce) {
+		super();
 		this.titular = titular;
 		this.numConta = numConta;
 		this.saldo = saldo;
+		this.cp = cp;
+		this.ce = ce;
+	}
+	
+	public ContaEspecial getCe() {
+		return ce;
+	}
+
+	public void setCe(ContaEspecial ce) {
+		this.ce = ce;
+	}
+
+	public ContaPoupanca getCp() {
+		return cp;
+	}
+
+	public void setCp(ContaPoupanca cp) {
+		this.cp = cp;
 	}
 
 	public String getTitular() {

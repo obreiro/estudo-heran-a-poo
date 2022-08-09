@@ -5,12 +5,19 @@ public final class ContaEspecial extends Conta {
 	private Double limite;
 	
 	public ContaEspecial() {
-	this.limite = 1000.0 + super.getSaldo();
+	this.limite = 1000.0;
+	}
+    
+	public ContaEspecial(String titular, Integer numConta, Double saldo, ContaPoupanca cp, ContaEspecial ce,
+			Double limite) {
+		super(titular, numConta, saldo, cp, ce);
+		
 	}
 
-	public ContaEspecial(String titular, Integer numConta, Double saldo, Double limite) {
-		super(titular, numConta, saldo);
-	}
+
+	/*public void setLimite(Double limite) {
+		this.limite = limite + super.getSaldo() ;
+	}*/
 
 	public Double getLimite() {
 		return limite;
@@ -19,7 +26,7 @@ public final class ContaEspecial extends Conta {
 	//metodo testa se saque é menor que saldo/limite
 	public boolean LimitandoConta(double valor) {
 		   if( valor < this.getLimite()) {
-			   super.sacar(valor);
+			   //super.sacar(valor);
 		    return true;
 		} else {
 			 return false;
@@ -32,5 +39,14 @@ public final class ContaEspecial extends Conta {
 		 System.out.println("Conta Especial");
 		this.limite -= valor ;
 	}
-		
+	
+	@Override
+	public String toString() {
+
+		//String info = "\nTitular: " + this.getTitular();
+		//info += "\nNúmero da conta: " + this.getNumConta();
+		//info += "\nSaldo: " + this.getSaldo();
+		String info = "\nSaldo Limite: " + this.getLimite();
+		return info;
+	}
 }

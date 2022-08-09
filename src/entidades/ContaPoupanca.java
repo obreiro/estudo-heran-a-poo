@@ -8,21 +8,22 @@ public class ContaPoupanca extends Conta {
 		
 	}
 
-	public ContaPoupanca(String titular, Integer numConta, Double saldo, Double taxa) {
-		super(titular, numConta, saldo);
+	public ContaPoupanca(String titular, Integer numConta, Double saldo, ContaPoupanca cp, ContaEspecial ce) {
+		super(titular, numConta, saldo, cp, ce);
 	}
-	
-	public void  atualizaSaldo() {
-		double tx = TAXA*super.getSaldo();
-	    this.setSaldo(getSaldo() + tx);
+
+	public void atualizaSaldo(double valor) {
+		double tx = (super.getSaldo() + valor);
+	    this.setSaldo(tx);
 	}
-	
 
 	@Override
 	public String toString() {
-		String info = "\nSaldo Poupança: " + this.getSaldo();
+		/*String info = "\nTitular: " + this.getTitular();
+		info += "\nNúmero da conta: " + this.getNumConta();
+		 info = "\nSaldo: " + this.getSaldo();*/
+		String info = super.toString();
+		info += "\nSaldo Poupança: " + this.getSaldo();
 		return info;
 	}
-	
-	
 }
